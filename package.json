@@ -13,9 +13,15 @@
     "check-parallel": "npm run lint:js & npm run lint:css & npm run lint:json & npm run lint:md & npm run mocha",
     "check-all": "npm-run-all lint:js lint:css lint:json lint:md mocha",
     "check-all-simple": "npm-run-all lint:* mocha",
-    "check-all-parallel": "npm-run-all --parallel lint:* mocha",
-    "//": "给 npm script 添加注释的一种方式。下面是 eslint 内置的自动修复模式",
-    "lint:js:fix": "npm run lint:js -- --fix"
+    "check-all-parallel": "mocha",
+    "//": "test整个流程: 先检查代码，然后单元测试，最后进行测试覆盖率",
+    "lint:js:fix": "npm run lint:js -- --fix",
+    "lint": "npm-run-all --parallel lint:*",
+    "pretest": "npm run lint",
+    "test": "npm run mocha",
+    "precover": "rimraf coverage",
+    "cover": "nyc --reporter=html npm test",
+    "postcover": "rimraf .nyc_output && open-cli coverage/index.html"
   },
   "keywords": [],
   "author": "xusp <xspstudyemail@163.com>",
@@ -27,6 +33,9 @@
     "markdownlint-cli": "^0.37.0",
     "mocha": "^10.2.0",
     "npm-run-all": "^4.1.5",
+    "nyc": "^15.1.0",
+    "open-cli": "^7.2.0",
+    "rimraf": "^5.0.5",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^34.0.0"
   }
