@@ -8,7 +8,12 @@
     "lint:css": "stylelint *.less",
     "lint:json": "jsonlint test.json",
     "lint:md": "markdownlint --config .markdownlint.json *.md",
-    "mocha": "mocha tests/"
+    "mocha": "mocha tests/",
+    "check-serial": "npm run lint:js && npm run lint:css && npm run lint:json && npm run lint:md && npm run mocha",
+    "check-parallel": "npm run lint:js & npm run lint:css & npm run lint:json & npm run lint:md & npm run mocha",
+    "check-all": "npm-run-all lint:js lint:css lint:json lint:md mocha",
+    "check-all-simple": "npm-run-all lint:* mocha",
+    "check-all-parallel": "npm-run-all --parallel lint:* mocha"
   },
   "keywords": [],
   "author": "xusp <xspstudyemail@163.com>",
@@ -19,6 +24,7 @@
     "jsonlint": "^1.6.3",
     "markdownlint-cli": "^0.37.0",
     "mocha": "^10.2.0",
+    "npm-run-all": "^4.1.5",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^34.0.0"
   }
