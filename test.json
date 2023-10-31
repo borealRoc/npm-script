@@ -1,0 +1,4 @@
+{
+    "name": "jsonlint",
+    'description': "use josnlint to lint test.json"
+}
