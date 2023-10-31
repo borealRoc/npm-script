@@ -13,7 +13,9 @@
     "check-parallel": "npm run lint:js & npm run lint:css & npm run lint:json & npm run lint:md & npm run mocha",
     "check-all": "npm-run-all lint:js lint:css lint:json lint:md mocha",
     "check-all-simple": "npm-run-all lint:* mocha",
-    "check-all-parallel": "npm-run-all --parallel lint:* mocha"
+    "check-all-parallel": "npm-run-all --parallel lint:* mocha",
+    "//": "给 npm script 添加注释的一种方式。下面是 eslint 内置的自动修复模式",
+    "lint:js:fix": "npm run lint:js -- --fix"
   },
   "keywords": [],
   "author": "xusp <xspstudyemail@163.com>",
