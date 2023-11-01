@@ -1,8 +1,11 @@
 {
   "name": "npm-script",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "main": "index.js",
+  "config": {
+    "port": 3000
+  },
   "scripts": {
     "lint:js": "eslint *.js",
     "lint:css": "stylelint *.less",
@@ -19,9 +22,15 @@
     "lint": "npm-run-all --parallel lint:*",
     "pretest": "npm run lint",
     "test": "npm run mocha",
-    "precover": "rimraf coverage",
     "cover": "nyc --reporter=html npm test",
-    "postcover": "rimraf .nyc_output && open-cli coverage/index.html"
+    "//": "删除coverage和.nyc_output文件夹",
+    "cover:clean": "rimraf coverage && rimraf .nyc_output",
+    "//": "如果不存在coverage_archive\\%npm_package_version%文件夹, 则创建, 并把coverage文件夹下的所有文件复制进去",
+    "cover:archive": "if not exist coverage_archive\\%npm_package_version% mkdir coverage_archive\\%npm_package_version% && copy coverage\\* coverage_archive\\%npm_package_version%",
+    "//": "以coverage_archive\\%npm_package_version%为根目录, %npm_package_config_port%为端口，创建服务器",
+    "cover:serve": "http-server coverage_archive\\%npm_package_version% -p %npm_package_config_port%",
+    "cover:open": "open-cli http://localhost:%npm_package_config_port%",
+    "postcover": "npm-run-all cover:archive cover:clean --parallel cover:serve cover:open"
   },
   "keywords": [],
   "author": "xusp <xspstudyemail@163.com>",
@@ -29,6 +38,7 @@
   "devDependencies": {
     "chai": "^4.3.10",
     "eslint": "^8.52.0",
+    "http-server": "^14.1.1",
     "jsonlint": "^1.6.3",
     "markdownlint-cli": "^0.37.0",
     "mocha": "^10.2.0",
