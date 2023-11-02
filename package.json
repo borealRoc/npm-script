@@ -22,19 +22,16 @@
     "lint": "npm-run-all --parallel lint:*",
     "pretest": "npm run lint",
     "test": "cross-env NODE_ENV=test npm run mocha",
-    "cover": "nyc --reporter=html npm test",
-    "cover:clean": "rimraf coverage && rimraf .nyc_output",
-    "cover:archive": "cross-var \"make-dir coverage_archive/$npm_package_version && cpr coverage/* coverage_archive/$npm_package_version -o\"",
-    "cover:serve": "cross-var http-server coverage_archive/$npm_package_version -p $npm_package_config_port",
-    "cover:open": "cross-var open-cli http://localhost:$npm_package_config_port",
-    "precover": "npm run cover:clean",
-    "postcover": "npm-run-all cover:archive cover:clean --parallel cover:serve cover:open"
+    "cover": "node scripts/cover.js",
+    "cover:serve": "scripty",
+    "cover:open": "scripty"
   },
   "keywords": [],
   "author": "xusp <xspstudyemail@163.com>",
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.3.10",
+    "chalk": "4.1.2",
     "cpr": "^3.0.1",
     "cross-env": "^7.0.3",
     "cross-var": "^1.1.0",
@@ -48,6 +45,8 @@
     "nyc": "^15.1.0",
     "open-cli": "^7.2.0",
     "rimraf": "^5.0.5",
+    "scripty": "^2.1.1",
+    "shelljs": "^0.8.5",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^34.0.0"
   }
