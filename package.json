@@ -23,8 +23,8 @@
     "pretest": "npm run lint",
     "test": "cross-env NODE_ENV=test npm run mocha",
     "cover": "node scripts/cover.js",
-    "cover:serve": "scripty",
-    "cover:open": "scripty"
+    "cover:serve": "cross-var http-server coverage_archive/$npm_package_version -p $npm_package_config_port",
+    "cover:open": "cross-var open-cli http://localhost:$npm_package_config_port"
   },
   "keywords": [],
   "author": "xusp <xspstudyemail@163.com>",
