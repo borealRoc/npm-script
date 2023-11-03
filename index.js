@@ -1,7 +1,7 @@
 const str = 'some value'
 
 function fn() {
-    console.log('some log')
+    console.log(str)
 }
 
 const add = (a, b) => {
@@ -12,6 +12,6 @@ const add = (a, b) => {
     return NaN;
 };
 
-console.log('测试husky的pre-commit钩子~~')
+fn()
 
 module.exports = { add };
