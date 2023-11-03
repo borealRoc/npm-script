@@ -12,6 +12,4 @@ const add = (a, b) => {
     return NaN;
 };
 
-fn()
-
 module.exports = { add };
