@@ -12,4 +12,6 @@ const add = (a, b) => {
     return NaN;
 };
 
+console.log('测试husky的pre-commit钩子')
+
 module.exports = { add };
