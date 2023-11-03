@@ -27,7 +27,8 @@
     "cover:open": "cross-var open-cli http://localhost:$npm_package_config_port",
     "watch:test": "npm t -- --watch",
     "watch:lint": "onchange -i \"**/*.js\" \"**/*.less\" -- npm run lint",
-    "watch": "npm-run-all --parallel watch:*"
+    "watch": "npm-run-all --parallel watch:*",
+    "client": "live-server client/"
   },
   "keywords": [],
   "author": "xusp <xspstudyemail@163.com>",
@@ -41,6 +42,7 @@
     "eslint": "^8.52.0",
     "http-server": "^14.1.1",
     "jsonlint": "^1.6.3",
+    "live-server": "^1.2.2",
     "make-dir-cli": "^3.1.0",
     "markdownlint-cli": "^0.37.0",
     "mocha": "^10.2.0",
